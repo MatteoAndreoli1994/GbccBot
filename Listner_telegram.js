@@ -131,7 +131,7 @@ async function main() {
 
         // L'if deve essere dentro il then perchè così li fa in serie e non in parallelo!
         if (Reveal == false) {
-
+          if (from == "0x0000000000000000000000000000000000000000") {
           var bscScan = truncate(to, 20);
           //NOTIFICA
           bot.telegram.sendPhoto(chatId, { source: "./hidden.png" }, {
@@ -147,6 +147,8 @@ async function main() {
               ]
             }
           });
+          
+        }
         }
         if (Reveal == true) {
           //NOTIFICA MINT TRUE//
