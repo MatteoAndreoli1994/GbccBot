@@ -2,13 +2,13 @@ const GameBoyzColorClubTestFinal = require('./GameBoyzColorClubTestFinal.json');
 const ethers = require("ethers");
 
 const { Telegraf } = require('telegraf')
-const bot = new Telegraf('5616960766:AAGcx-JZNpUyQr3kIYhHL1WQaF9u9bW7Jwk')
+const bot = new Telegraf('5956629107:AAHGc8OOsYNOlauUPgVXCZ3wirU5lzIm5dk')
 const path = require('path')
 const https = require('https');
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
 async function main() {
-  const address = "0xfee743f7421be57004f3f95792f627b60ed73392";
+  const address = "0x27c129b0172a3b0335b33c43b55247d9a047f18a";
   Value = 0;
   const provider = new ethers.providers.JsonRpcProvider("https://data-seed-prebsc-1-s1.binance.org:8545/");
   const contract = new ethers.Contract(address, GameBoyzColorClubTestFinal, provider);
@@ -22,7 +22,7 @@ async function main() {
 
 
   bot.use()
-  chatId = "-674969472";
+  chatId = "-1001868729774";
 
   Reveal = true;
   console.log("ok");
@@ -148,7 +148,7 @@ async function main() {
             }
           });
           
-        }
+          }
         }
         if (Reveal == true) {
           //NOTIFICA MINT TRUE//
