@@ -99,8 +99,8 @@ async function main() {
   bot.launch()
 
   contract.on("Transfer", async (from, to, value, event) => {
-    console.log("Wait 40 sec");
-    await delay(40000);
+    console.log("Wait 30 sec");
+    await delay(30000);
 
     let info = {
       from: from,
