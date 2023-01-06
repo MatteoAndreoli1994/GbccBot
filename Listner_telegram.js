@@ -71,7 +71,7 @@ async function main() {
           console.log(body);
           console.log(Reveal);
           let ArrayJson = body.split('"');
-          ipfs = "https://gateway.pinata.cloud/ipfs/QmbESzkHKXPtiFoQXxVGKAmPog5wc95FZcCSCKU2iyxTQj/1.png";
+          ipfs = "";
           bot.telegram.sendPhoto(chatId, { url: ipfs }, {
             caption:
               "ciao".link("https://www.google.it"),
@@ -117,7 +117,7 @@ async function main() {
     output = "";
     filePath = "https://fra1.digitaloceanspaces.com/gbccdbtest/fake-token/public/metadata/" + Value + ".json";
 
-    https.get(filePath, async (res) => {
+    https.get(filePath, (res) => {
 
 
 
@@ -130,14 +130,15 @@ async function main() {
         Reveal = bool;
 
         // L'if deve essere dentro il then perchè così li fa in serie e non in parallelo!
-        if (Reveal == false) {
+      if (Reveal == false) {
+        try {
           if (from == "0x0000000000000000000000000000000000000000") {
           var bscScan = truncate(to, 20);
           //NOTIFICA
           bot.telegram.sendPhoto(chatId, { source: "./hidden.png" }, {
             caption:
 
-              "GameBoyzColor Club #".bold() + Value.bold() + "\n" + "has been minted \n\n" + "Minter: ".bold() + bscScan.link('https://testnet.bscscan.com/address/' + to)
+            "GameBoyColor Club #" + Value.bold() + "\n" + "has been minted \n\n" + "Minter: ".bold() + bscScan.link('https://testnet.bscscan.com/address/' + to)
             , parse_mode: 'HTML', reply_markup: {
               inline_keyboard: [
                 [
@@ -149,6 +150,9 @@ async function main() {
           });
           
           }
+        } catch (error) {
+          console.error(error.message);
+        };
         }
         if (Reveal == true) {
           //NOTIFICA MINT TRUE//
