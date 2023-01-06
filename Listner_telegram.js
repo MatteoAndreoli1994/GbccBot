@@ -8,7 +8,7 @@ const https = require('https');
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
 async function main() {
-  const address = "0x27c129b0172a3b0335b33c43b55247d9a047f18a";
+  const address = "0x762C566e21B65E9377CC4FC45D91A24530308bd8";
   Value = 0;
   const provider = new ethers.providers.JsonRpcProvider("https://data-seed-prebsc-1-s1.binance.org:8545/");
   const contract = new ethers.Contract(address, GameBoyzColorClubTestFinal, provider);
