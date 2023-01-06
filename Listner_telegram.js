@@ -81,6 +81,7 @@ async function main() {
   bot.launch()
 
   contract.on("Transfer", async (from, to, value, event) => {
+  try {
     console.log("Wait 30 sec");
     await delay(30000);
 
@@ -113,7 +114,7 @@ async function main() {
 
         // L'if deve essere dentro il then perchè così li fa in serie e non in parallelo!
       if (Reveal == false) {
-        try {
+        
           if (from == "0x0000000000000000000000000000000000000000") {
           var bscScan = truncate(to, 20);
           //NOTIFICA
@@ -132,9 +133,7 @@ async function main() {
           });
           
           }
-        } catch (error) {
-          console.error(error.message);
-        };
+
         }
         if (Reveal == true) {
           //NOTIFICA MINT TRUE//
@@ -196,7 +195,9 @@ async function main() {
     });
 
 
-
+} catch (error) {
+    console.error(error.message);
+};
   });
   
 }
