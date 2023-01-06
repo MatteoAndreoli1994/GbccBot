@@ -35,25 +35,7 @@ async function main() {
 
 
 
-  bot.command('Photo', async (ctx) => {
-    promise = checkReveal();
-    promise.then((bool) => {
 
-      Reveal = bool;
-
-      // L'if deve essere dentro il then perchè così li fa in serie e non in parallelo!
-      if (Reveal == false) {
-        bot.telegram.sendMessage(chatId, "è falso");
-      }
-      if (Reveal == true) {
-        bot.telegram.sendMessage(chatId, "è vero");
-      }
-    })
-
-
-
-
-  })
 
 
   bot.start((ctx) => {
