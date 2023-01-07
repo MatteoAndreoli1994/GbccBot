@@ -119,7 +119,7 @@ async function main() {
           bot.telegram.sendPhoto(chatId, { source: "./hidden.png" }, {
             caption:
 
-            "GameBoyColor Club #" + Value.bold() + "\n" + "has been minted \n\n" + "Minter: ".bold() + bscScan.link('https://testnet.bscscan.com/address/' + to)
+            "GameBoyColor Club #".bold() + value + "\n" + "has been minted \n\n" + "Minter: ".bold() + bscScan.link('https://testnet.bscscan.com/address/' + to)
             , parse_mode: 'HTML', reply_markup: {
               inline_keyboard: [
                 [
