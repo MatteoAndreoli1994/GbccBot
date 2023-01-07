@@ -2,7 +2,7 @@ const GameBoyzColorClubTestFinal = require('./GameBoyzColorClubTestFinal.json');
 const ethers = require("ethers");
 
 const { Telegraf } = require('telegraf')
-const bot = new Telegraf('5956629107:AAHGc8OOsYNOlauUPgVXCZ3wirU5lzIm5dk')
+const bot = new Telegraf('5784113612:AAFZoQz7aBDYvNrdNL86mfRBtA-Ggo7e4p4')
 const path = require('path')
 const https = require('https');
 const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -32,7 +32,6 @@ async function main() {
     console.log(promise);
     return promise;
   }
-
 
 
 
@@ -81,7 +80,6 @@ async function main() {
   bot.launch()
 
   contract.on("Transfer", async (from, to, value, event) => {
-  try {
     console.log("Wait 30 sec");
     await delay(30000);
 
@@ -114,7 +112,7 @@ async function main() {
 
         // L'if deve essere dentro il then perchè così li fa in serie e non in parallelo!
       if (Reveal == false) {
-        
+        try {
           if (from == "0x0000000000000000000000000000000000000000") {
           var bscScan = truncate(to, 20);
           //NOTIFICA
@@ -133,7 +131,9 @@ async function main() {
           });
           
           }
-
+        } catch (error) {
+          console.error(error.message);
+        };
         }
         if (Reveal == true) {
           //NOTIFICA MINT TRUE//
@@ -195,9 +195,7 @@ async function main() {
     });
 
 
-} catch (error) {
-    console.error(error.message);
-};
+
   });
   
 }
