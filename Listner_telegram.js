@@ -17,10 +17,7 @@ async function main() {
   function truncate(str, n) {
     return (str.length > n) ? str.slice(0, n - 1) + '...' : str;
   };
-  //
-
-
-
+  
   bot.use()
   chatId = "-1001821596289";
 
@@ -33,52 +30,91 @@ async function main() {
     return promise;
   }
 
-
-
-
-
-  bot.start((ctx) => {
-
+bot.command('show',(ctx) => {
+  text= ctx.message.text;
+  id_tmp = text.split(' ');
+  id= id_tmp[1];
+  console.log(id);
+  
+  filePath = "https://fra1.digitaloceanspaces.com/gbccdbtest/fake-token/public/metadata/"+id+".json";
+  
+  
     https.get(filePath, (res) => {
-      let body = "";
 
-      res.on("data", (chunk) => {
-        body += chunk;
-      });
+      console.log(filePath);
+      ////////CHECK REVEAL/////
+      promise = checkReveal();
+      promise.then((bool) => {
 
-      res.on("end", () => {
-        try {
-          let json = JSON.parse(body);
-          console.log(body);
-          console.log(Reveal);
-          let ArrayJson = body.split('"');
-          ipfs = "";
-          bot.telegram.sendPhoto(chatId, { url: ipfs }, {
-            caption:
-              "ciao".link("https://www.google.it"),
+        Reveal = bool
+      
+        //SHOW ONLY IF REVEAL AVVENUTO
+        if (Reveal == true) {
+            let body = "";
 
-            parse_mode: 'HTML',
-            reply_markup: {
-              inline_keyboard: [
-                [
-                  { text: "Mint your GBCC HERE", url: "https://www.google.it" }
-                ]
+            res.on("data", (chunk) => {
+              body += chunk;
+            });
+            res.on("end", async() => {
+              try {
+                let json = JSON.parse(body);
+                console.log(body);
+                
+                  //info
+                  let ArrayJson = body.split('"');
+                  let ipfs = ArrayJson[11];
+                  
+                  owner = await contract.ownerOf(id);
+                  
+                  
+                  dati = "👁‍🗨"+ArrayJson[3].bold()  + "\n\nOwner: ".bold() + owner.link('https://testnet.bscscan.com/address/' + owner) + "\n\n" + "Traits:\n".bold() +
+                    "\nBackground: ".bold() + ArrayJson[29].italics() +
+                    "\nBody: ".bold() + ArrayJson[37].italics() +
+                    "\nEyes: ".bold() + ArrayJson[45].italics() +
+                    "\nAccesories: ".bold() + ArrayJson[53].italics() +
+                    "\nHand detail: ".bold() + ArrayJson[61].italics();
+                  
+                  
+                    bot.telegram.sendPhoto(chatId, { url: ipfs }, {
+                
+                    caption: dati, parse_mode: 'HTML', reply_markup: {
+                      inline_keyboard: [
+                        [
+                          { text: "Mint your GBCC HERE", url: "https://www.google.it" }
+                        ]
 
-              ]
-            }
-          });
+                      ]
+                    },reply_to_message_id: ctx.message.message_id
+                  });
+                
 
-        } catch (error) {
-          console.error(error.message);
-        };
-      });
-
+              } catch (error) {
+                console.error(error.message);
+              };
+            });
+            
+        }
+      })
+    
     }).on("error", (error) => {
       console.error(error.message);
-    });
-  })
-  bot.launch()
+      });
+  
+})
 
+
+
+
+
+
+
+
+
+
+
+
+  bot.launch()
+  /////////////////////NOTIFICHE MINT/////////////////
   contract.on("Transfer", async (from, to, value, event) => {
     console.log("Wait 30 sec");
     await delay(30000);
@@ -106,20 +142,21 @@ async function main() {
       ////////CHECK REVEAL/////
       promise = checkReveal();
 
-      promise.then((bool) => {
+    promise.then((bool) => {
 
-        Reveal = bool;
+        Reveal = bool
+      
 
-        // L'if deve essere dentro il then perchè così li fa in serie e non in parallelo!
+      //NOTIFICA NO REVEAL
       if (Reveal == false) {
         try {
           if (from == "0x0000000000000000000000000000000000000000") {
           var bscScan = truncate(to, 20);
-          //NOTIFICA
+
           bot.telegram.sendPhoto(chatId, { source: "./hidden.png" }, {
             caption:
 
-            "GameBoyColor Club #".bold() + value + "\n" + "has been minted \n\n" + "Minter: ".bold() + bscScan.link('https://testnet.bscscan.com/address/' + to)
+            "🌏"+"GameBoyColor Club #".bold() + value + "\n" + "has been minted \n\n" + "Minter: ".bold() + bscScan.link('https://testnet.bscscan.com/address/' + to)
             , parse_mode: 'HTML', reply_markup: {
               inline_keyboard: [
                 [
@@ -134,9 +171,10 @@ async function main() {
         } catch (error) {
           console.error(error.message);
         };
-        }
-        if (Reveal == true) {
-          //NOTIFICA MINT TRUE//
+      }
+      //NOTIFICA REVEAL AVVENUTO
+      if (Reveal == true) {
+        
 
           let body = "";
 
@@ -153,7 +191,7 @@ async function main() {
                 //info
                 let ArrayJson = body.split('"');
                 var bscScan = truncate(to, 20);
-                dati = ArrayJson[3].bold() + "\n" + "has been minted \n\n" + "Minter: ".bold() + bscScan.link('https://testnet.bscscan.com/address/' + to) + "\n\n" + "Traits:\n".bold() +
+                dati = "🌏"+ArrayJson[3].bold() + "\n" + "has been minted \n\n" + "Minter: ".bold() + bscScan.link('https://testnet.bscscan.com/address/' + to) + "\n\n" + "Traits:\n".bold() +
                   "\nBackground: ".bold() + ArrayJson[29].italics() +
                   "\nBody: ".bold() + ArrayJson[37].italics() +
                   "\nEyes: ".bold() + ArrayJson[45].italics() +
@@ -175,29 +213,28 @@ async function main() {
                 //}
               }
 
-
-              //bot.telegram.sendMessage(chatId, output);
             } catch (error) {
               console.error(error.message);
             };
           });
-          //FINE NOTIFICA MINT
-        }
-
-      })
-      //
-
-
+          
+      }
+      
+    })
+    
 
 
-    }).on("error", (error) => {
+
+
+  }).on("error", (error) => {
       console.error(error.message);
     });
-
+    //
 
 
   });
-  
+  /////////////////////NOTIFICHE MINT: END/////////////////
+
 }
 
 main();
