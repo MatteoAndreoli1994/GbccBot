@@ -60,7 +60,7 @@ bot.command('owner',async(ctx) => {
   })
 
   console.log(uniqueArray);
-  ctx.reply("📜Game Boyz Colors Club Owner: ".bold()+uniqueArray.length+"\n"
+  ctx.reply("📜Game Boyz Colors Club Owners: ".bold()+uniqueArray.length+"\n"
   
   , {
     reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML', reply_markup: {
