@@ -12,14 +12,14 @@ async function main() {
   Value = 0;
   const provider = new ethers.providers.JsonRpcProvider("https://data-seed-prebsc-1-s1.binance.org:8545/");
   const contract = new ethers.Contract(address, GameBoyzColorClubTestFinal, provider);
-
+  const hexToDecimal = hex => parseInt(hex, 16);
   //accorcia stringa
   function truncate(str, n) {
     return (str.length > n) ? str.slice(0, n - 1) + '...' : str;
   };
   
   bot.use()
-  chatId = "-1001821596289";
+  chatId = "-1001868729774";
 
   Reveal = true;
   console.log("ok");
@@ -29,7 +29,132 @@ async function main() {
     console.log(promise);
     return promise;
   }
+  async function checkMinted() {
+    minted_hex = await contract.totalSupply();
+    minted_hex= minted_hex._hex;
+    minted = hexToDecimal(minted_hex);
+    console.log(minted);
+    return minted;
+  }
 
+/////////INFO/////////
+//Holders
+bot.command('owner',async(ctx) => {
+  minted= await checkMinted();
+  holders=[];
+  indirizzi=[];
+  output=[];
+  for(i=1;i<minted;i++){
+    holders[i]= contract.ownerOf(i);
+  }
+
+  console.log("Wait 10 sec");
+  await delay(10000);
+
+  for(i=1;i<minted;i++){
+     output[i] = await holders[i].then((result) => indirizzi=result);
+  }
+ 
+ uniqueArray = output.filter(function(item, pos) {
+  return output.indexOf(item) == pos;
+  })
+
+  console.log(uniqueArray);
+  ctx.reply("📜Game Boyz Colors Club Owner: ".bold()+uniqueArray.length+"\n"
+  
+  , {
+    reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML', reply_markup: {
+      inline_keyboard: [
+        [
+          { text: "Mint yours!", url: "https://gameboyzcolorclub.netlify.app" },
+        ]
+
+      ]
+    }
+  })
+
+})
+
+//Minted
+bot.command('minted',async(ctx) => {
+minted= await checkMinted();
+  ctx.reply("Game Boyz Color Club Minted: ".bold()+minted
+  
+  , {
+    reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML', reply_markup: {
+      inline_keyboard: [
+        [
+          { text: "Mint yours!", url: "https://gameboyzcolorclub.netlify.app" },
+        ]
+
+      ]
+    }
+  })
+})
+
+
+bot.command('links',(ctx) => {
+  
+
+  ctx.reply('🔗 \n'.bold()+"\n", {
+    reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML', reply_markup: {
+      inline_keyboard: [
+        [
+          { text: "Twitter", url: "https://twitter.com/GBCCNFT" },
+          { text: "Website", url: "https://gameboyzcolorclub.netlify.app" },
+          { text: "Bscscan", url: "https://testnet.bscscan.com/address/0x762c566e21b65e9377cc4fc45d91a24530308bd8#writeContract" }
+        ]
+
+      ]
+    }
+  })
+})
+
+//Website
+bot.command('website',(ctx) => {
+  ctx.reply("🌐 \n".bold(), {
+    reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML', reply_markup: {
+      inline_keyboard: [
+        [
+          { text: "GBCC Website", url: "https://gameboyzcolorclub.netlify.app" },
+        ]
+
+      ]
+    }
+  })
+})
+
+//Info
+bot.command('info',(ctx) => {
+  ctx.reply("Game Boyz Color Club is a private collection of 2222 NFTs-unique digital collectibles. The GameBoyz are stored as ERC-721 tokens on the Binance Smart Chain and hosted on IPFS.\n".bold()+"Each nft will grant you to partecipate in more than 10+ telegram and web-game everyday with lots of juicy prizes!".italics(), {
+    reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML', reply_markup: {
+      inline_keyboard: [
+        [
+          { text: "Follow us of Twitter", url: "https://twitter.com/GBCCNFT" },
+        ]
+
+      ]
+    }
+  })
+})
+
+//Help
+bot.command('help',(ctx) => {
+  ctx.reply("List of commands:\n\n".bold()
+  +"/links: works!\n"
+  +"/website: works!\n"
+  +"/show {id}: works!\n"
+  +"/info: works!\n"
+  +"/holders: to do!\n"
+  +"/minted: to do!\n"
+  ,{reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML'});
+})
+
+
+
+
+
+////////SHOW NFT//////
 bot.command('show',(ctx) => {
   text= ctx.message.text;
   id_tmp = text.split(' ');
@@ -101,16 +226,6 @@ bot.command('show',(ctx) => {
       });
   
 })
-
-
-
-
-
-
-
-
-
-
 
 
   bot.launch()
@@ -204,7 +319,7 @@ bot.command('show',(ctx) => {
                   caption: dati, parse_mode: 'HTML', reply_markup: {
                     inline_keyboard: [
                       [
-                        { text: "Mint your GBCC HERE", url: "https://www.google.it" }
+                        { text: "Mint your GBCC HERE", url: "https://gameboyzcolorclub.netlify.app" }
                       ]
 
                     ]
