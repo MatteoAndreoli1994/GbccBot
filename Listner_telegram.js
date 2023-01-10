@@ -39,7 +39,7 @@ async function main() {
 
 /////////INFO/////////
 //Holders
-bot.command('owner',async(ctx) => {
+bot.command('owners',async(ctx) => {
   minted= await checkMinted();
   holders=[];
   indirizzi=[];
@@ -141,12 +141,12 @@ bot.command('info',(ctx) => {
 //Help
 bot.command('help',(ctx) => {
   ctx.reply("List of commands:\n\n".bold()
-  +"/links: works!\n"
-  +"/website: works!\n"
-  +"/show {id}: works!\n"
-  +"/info: works!\n"
-  +"/holders: to do!\n"
-  +"/minted: to do!\n"
+  +"/links: Shows our usefull links\n"
+  +"/website: Shows our website\n"
+  +"/show {id}: Shows all the information of a specific GBCC\n"
+  +"/info: To know more about the project \n"
+  +"/owners: Shows the number of owners!\n"
+  +"/minted: Shows the number of GBCC minted!\n"
   ,{reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML'});
 })
 
