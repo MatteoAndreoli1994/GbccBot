@@ -140,6 +140,11 @@ bot.command('website',(ctx) => {
   })
 })
 
+//Game
+bot.command('game',(ctx) => {
+  ctx.reply("🎮 There are no active game right now. \n".bold())
+})
+
 //Info
 bot.command('info',(ctx) => {
   ctx.reply("Game Boyz Color Club is a private collection of 2222 NFTs-unique digital collectibles. The GameBoyz are stored as ERC-721 tokens on the Binance Smart Chain and hosted on IPFS.\n".bold()+"Each nft will grant you to partecipate in more than 10+ telegram and web-game everyday with lots of juicy prizes!".italics(), {
@@ -156,11 +161,16 @@ bot.command('info',(ctx) => {
 
 //Help
 bot.command('help',(ctx) => {
-  ctx.reply("List of commands:\n\n".bold()
-  +"/links: Shows our usefull links\n"
+
+  ctx.reply(
+  //Base commands:
+  "List of active commands:\n\n".bold()
+  +"/info: Know more about the project \n"
+  +"/links: Shows GBCC official links\n"
   +"/website: Shows our website\n"
+  +"/game: Shows ongoing games and contests\n"
+  //Advanced commands when mint starts
   +"/show {id}: Shows all the information of a specific GBCC\n"
-  +"/info: To know more about the project \n"
   +"/owners: Shows the number of owners!\n"
   +"/minted: Shows the number of GBCC minted!\n"
   ,{reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML'});
