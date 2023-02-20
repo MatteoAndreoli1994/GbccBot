@@ -177,7 +177,7 @@ bot.command('show', async(ctx) => {
   id= id_tmp[1];
   console.log(id);
   
-  filePath = "https://fra1.digitaloceanspaces.com/gbccdbtest/fake-token/public/metadata/"+id+".json";
+  filePath = "https://fra1.digitaloceanspaces.com/gbccdbtest/gbcc-token/public/metadata/"+id+".json";
   
   
     https.get(filePath, async(res) => {
@@ -263,7 +263,7 @@ bot.command('show', async(ctx) => {
 
 
     output = "";
-    filePath = "https://fra1.digitaloceanspaces.com/gbccdbtest/fake-token/public/metadata/" + Value + ".json";
+    filePath = "https://fra1.digitaloceanspaces.com/gbccdbtest/gbcc-token/public/metadata/" + Value + ".json";
 
     https.get(filePath, (res) => {
 
@@ -329,7 +329,7 @@ bot.command('show', async(ctx) => {
                   "\nAccesories: ".bold() + ArrayJson[53].italics() +
                   "\nHand detail: ".bold() + ArrayJson[61].italics();
 
-                ipfs = "https://fra1.digitaloceanspaces.com/gbccdbtest/fake-token/public/assets/" + value + ".png";
+                ipfs = "https://fra1.digitaloceanspaces.com/gbccdbtest/gbcc-token/public/assets/" + value + ".png";
 
                 bot.telegram.sendPhoto(chatId, { url: ipfs }, {
                   caption: dati, parse_mode: 'HTML', reply_markup: {
