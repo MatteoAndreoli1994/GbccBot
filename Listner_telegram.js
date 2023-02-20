@@ -8,7 +8,7 @@ const https = require('https');
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
 async function main() {
-  const address = "0x762C566e21B65E9377CC4FC45D91A24530308bd8";
+  const address = "0x64A823543e787d6D94742AF7E34ee5ac15E2d522";
   Value = 0;
   const provider = new ethers.providers.JsonRpcProvider("https://data-seed-prebsc-1-s1.binance.org:8545/");
   const contract = new ethers.Contract(address, GameBoyzColorClubTestFinal, provider);
@@ -60,7 +60,7 @@ bot.command('owners',async(ctx) => {
   })
 
   console.log(uniqueArray);
-  ctx.reply("📜Game Boyz Colors Club Owners: ".bold()+uniqueArray.length+"\n"
+  ctx.reply("📜Game Boyz Color Club Owners: ".bold()+uniqueArray.length+"\n"
   
   , {
     reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML', reply_markup: {
@@ -91,6 +91,22 @@ minted= await checkMinted();
     }
   })
 })
+//fake registration
+bot.command('registration',async(ctx) => {
+  minted= await checkMinted();
+    ctx.reply("Address successfull registered".bold()
+    
+    , {
+      reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML', reply_markup: {
+        inline_keyboard: [
+          [
+            { text: "🎮Play the Game Now!", url: "https://gameboyzcolorclub.netlify.app" },
+          ]
+  
+        ]
+      }
+    })
+  })
 
 
 bot.command('links',(ctx) => {
@@ -155,7 +171,7 @@ bot.command('help',(ctx) => {
 
 
 ////////SHOW NFT//////
-bot.command('show',(ctx) => {
+bot.command('show', async(ctx) => {
   text= ctx.message.text;
   id_tmp = text.split(' ');
   id= id_tmp[1];
@@ -164,7 +180,7 @@ bot.command('show',(ctx) => {
   filePath = "https://fra1.digitaloceanspaces.com/gbccdbtest/fake-token/public/metadata/"+id+".json";
   
   
-    https.get(filePath, (res) => {
+    https.get(filePath, async(res) => {
 
       console.log(filePath);
       ////////CHECK REVEAL/////
