@@ -141,13 +141,12 @@ bot.command('website',(ctx) => {
 })
 //Website
 bot.command('game',async(ctx) => {
-  minted= await checkMinted();
     ctx.reply("There are no active game right now.".bold())
   })
 
 //Info
 bot.command('info',(ctx) => {
-  ctx.reply("Game Boyz Color Club is a private collection of 2222 NFTs-unique digital collectibles. The GameBoyz are stored as ERC-721 tokens on the Binance Smart Chain and hosted on IPFS.\n".bold()+"Each nft will grant you to partecipate in more than 10+ telegram and web-game everyday with lots of juicy prizes!".italics(), {
+  ctx.reply("Game Boyz Color Club is a private collection of NFTs-unique digital collectibles. The GameBoyz are stored as ERC-721 tokens on the Binance Smart Chain. \n".bold()+"Each NFT will allow you to participate in our fantastic community, with access to special privileges such as games, reward systems, early access to future projects and collections from our ecosystem.".italics(), {
     reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML', reply_markup: {
       inline_keyboard: [
         [
