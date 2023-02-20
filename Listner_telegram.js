@@ -118,7 +118,7 @@ bot.command('links',(ctx) => {
         [
           { text: "Twitter", url: "https://twitter.com/GBCCNFT" },
           { text: "Website", url: "https://gameboyzcolorclub.netlify.app" },
-          { text: "Bscscan", url: "https://testnet.bscscan.com/address/0x762c566e21b65e9377cc4fc45d91a24530308bd8#writeContract" }
+          { text: "Bscscan", url: "https://testnet.bscscan.com/address/0x64a823543e787d6d94742af7e34ee5ac15e2d522" }
         ]
 
       ]
@@ -209,11 +209,12 @@ bot.command('show', async(ctx) => {
                   
                   
                   dati = "👁‍🗨"+ArrayJson[3].bold()  + "\n\nOwner: ".bold() + owner.link('https://testnet.bscscan.com/address/' + owner) + "\n\n" + "Traits:\n".bold() +
-                    "\nBackground: ".bold() + ArrayJson[29].italics() +
-                    "\nBody: ".bold() + ArrayJson[37].italics() +
-                    "\nEyes: ".bold() + ArrayJson[45].italics() +
-                    "\nAccesories: ".bold() + ArrayJson[53].italics() +
-                    "\nHand detail: ".bold() + ArrayJson[61].italics();
+                  "\nBackground: ".bold() + ArrayJson[29].italics() +
+                  "\nBody: ".bold() + ArrayJson[37].italics() +
+                  "\nBody detail: ".bold() + ArrayJson[45].italics() +
+                  "\nFace: ".bold() + ArrayJson[53].italics() +
+                  "\nHead detail: ".bold() + ArrayJson[61].italics() +
+                  "\nHand detail: ".bold() + ArrayJson[69].italics();
                   
                   
                     bot.telegram.sendPhoto(chatId, { url: ipfs }, {
@@ -325,9 +326,10 @@ bot.command('show', async(ctx) => {
                 dati = "🌏"+ArrayJson[3].bold() + "\n" + "has been minted \n\n" + "Minter: ".bold() + bscScan.link('https://testnet.bscscan.com/address/' + to) + "\n\n" + "Traits:\n".bold() +
                   "\nBackground: ".bold() + ArrayJson[29].italics() +
                   "\nBody: ".bold() + ArrayJson[37].italics() +
-                  "\nEyes: ".bold() + ArrayJson[45].italics() +
-                  "\nAccesories: ".bold() + ArrayJson[53].italics() +
-                  "\nHand detail: ".bold() + ArrayJson[61].italics();
+                  "\nBody detail: ".bold() + ArrayJson[45].italics() +
+                  "\nFace: ".bold() + ArrayJson[53].italics() +
+                  "\nHead detail: ".bold() + ArrayJson[61].italics() +
+                  "\nHand detail: ".bold() + ArrayJson[69].italics();
 
                 ipfs = "https://fra1.digitaloceanspaces.com/gbccdbtest/gbcc-token/public/assets/" + value + ".png";
 
