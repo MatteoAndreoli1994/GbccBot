@@ -139,10 +139,18 @@ bot.command('website',(ctx) => {
     }
   })
 })
-
-//Game
+//Website
 bot.command('game',(ctx) => {
-  ctx.reply("🎮 There are no active game right now. \n".bold())
+  ctx.reply("🎮 There are no active game right now. \n".bold(), {
+    reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML', reply_markup: {
+      inline_keyboard: [
+        [
+          { text: "", url: "https://gameboyzcolorclub.netlify.app" },
+        ]
+
+      ]
+    }
+  })
 })
 
 //Info
