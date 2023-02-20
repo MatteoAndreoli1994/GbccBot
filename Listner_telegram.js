@@ -141,7 +141,16 @@ bot.command('website',(ctx) => {
 })
 //Website
 bot.command('game',async(ctx) => {
-    ctx.reply("There are no active game right now.".bold())
+    ctx.reply("There are no active game right now.".bold(), {
+      reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML', reply_markup: {
+        inline_keyboard: [
+          [
+            { text: "Follow us of Twitter", url: "https://twitter.com/GBCCNFT" },
+          ]
+  
+        ]
+      }
+    })
   })
 
 //Info
@@ -169,7 +178,7 @@ bot.command('help',(ctx) => {
   +"/website: Shows our website\n"
   +"/game: Shows ongoing games and contests\n"
   //Advanced commands when mint starts
-  +"/show {id}: Shows all the information of a specific GBCC\n"
+  +"/show {id}: Shows a specific GBCC\n"
   +"/owners: Shows the number of owners!\n"
   +"/minted: Shows the number of GBCC minted!\n"
   ,{reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML'});
