@@ -139,8 +139,8 @@ bot.command('website',(ctx) => {
     }
   })
 })
-//Website
-bot.command('game',async(ctx) => {
+//Game
+bot.command('games',async(ctx) => {
     ctx.reply("There are no active game right now.".bold(), {
       reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML', reply_markup: {
         inline_keyboard: [
@@ -173,14 +173,14 @@ bot.command('help',(ctx) => {
   ctx.reply(
   //Base commands:
   "List of active commands:\n\n".bold()
-  +"/info: Know more about the project \n"
-  +"/links: Shows GBCC official links\n"
-  +"/website: Shows our website\n"
-  +"/game: Shows ongoing games and contests\n"
+  +"/info: Know more about the project.\n"
+  +"/links: Shows GBCC official links.\n"
+  +"/website: Shows our website.\n"
+  +"/games: Shows ongoing games and contests.\n"
   //Advanced commands when mint starts
-  +"/show {id}: Shows a specific GBCC\n"
-  +"/owners: Shows the number of owners!\n"
-  +"/minted: Shows the number of GBCC minted!\n"
+  +"/show {id}: Shows a specific GBCC.\n"
+  +"/owners: Shows the number of owners.\n"
+  +"/minted: Shows the number of GBCC minted.\n"
   ,{reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML'});
 })
 
