@@ -142,18 +142,7 @@ bot.command('website',(ctx) => {
 //Website
 bot.command('game',async(ctx) => {
   minted= await checkMinted();
-    ctx.reply("There are no active game right now.".bold()
-    
-    , {
-      reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML', reply_markup: {
-        inline_keyboard: [
-          [
-            { text: "Mint yours!", url: "https://gameboyzcolorclub.netlify.app" },
-          ]
-  
-        ]
-      }
-    })
+    ctx.reply("There are no active game right now.".bold())
   })
 
 //Info
