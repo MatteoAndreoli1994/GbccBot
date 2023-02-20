@@ -140,18 +140,21 @@ bot.command('website',(ctx) => {
   })
 })
 //Website
-bot.command('game',(ctx) => {
-  ctx.reply("🎮 There are no active game right now. \n".bold(), {
-    reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML', reply_markup: {
-      inline_keyboard: [
-        [
-          { text: "", url: "https://gameboyzcolorclub.netlify.app" },
+bot.command('game',async(ctx) => {
+  minted= await checkMinted();
+    ctx.reply("There are no active game right now.".bold()
+    
+    , {
+      reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML', reply_markup: {
+        inline_keyboard: [
+          [
+            { text: "Mint yours!", url: "https://gameboyzcolorclub.netlify.app" },
+          ]
+  
         ]
-
-      ]
-    }
+      }
+    })
   })
-})
 
 //Info
 bot.command('info',(ctx) => {
