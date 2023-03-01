@@ -8,7 +8,7 @@ const https = require('https');
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
 async function main() {
-  const address = "0x64A823543e787d6D94742AF7E34ee5ac15E2d522";
+  const address = "0x5460bE11250b13a214D388DfAE45179733855886";
   Value = 0;
   const provider = new ethers.providers.JsonRpcProvider("https://data-seed-prebsc-1-s1.binance.org:8545/");
   const contract = new ethers.Contract(address, GameBoyzColorClubTestFinal, provider);
@@ -118,7 +118,7 @@ bot.command('links',(ctx) => {
         [
           { text: "Twitter", url: "https://twitter.com/GBCCNFT" },
           { text: "Website", url: "https://gameboyzcolorclub.netlify.app" },
-          { text: "Bscscan", url: "https://testnet.bscscan.com/address/0x64a823543e787d6d94742af7e34ee5ac15e2d522" }
+          { text: "Bscscan", url: "https://testnet.bscscan.com/address/0x5460bE11250b13a214D388DfAE45179733855886" }
         ]
 
       ]
