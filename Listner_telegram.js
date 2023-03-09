@@ -19,7 +19,7 @@ async function main() {
   };
   
   bot.use()
-  chatId = "-1001868729774";
+  chatId = "-1001785256396";
 
   Reveal = true;
   console.log("ok");
