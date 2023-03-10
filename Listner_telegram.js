@@ -40,14 +40,14 @@ async function main() {
 /////////INFO/////////
 //Holders
 bot.command('owners',(ctx) => {
-  ctx.reply("📜Owners: 0".bold() +"\nMint not started yet! \n", {
+  ctx.reply("📜Owners: 0".bold() +"\nThe Minting Fase has not started yet! \n", {
     reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML'
   })
 })
 
 //Minted
 bot.command('minted',(ctx) => {
-  ctx.reply("Mints: 0".bold() +"\nMint not started yet! \n", {
+  ctx.reply("Mints: 0".bold() +"\nThe Minting Fase has not started yet! \n", {
     reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML'
   })
 })
@@ -63,8 +63,8 @@ bot.command('links',(ctx) => {
   'Twitter: '.bold()+ "https://twitter.com/GBCCNFT"+"\n"+
   
   'Website: '.bold()+ "Really Soon."+"\n"+
-  'Contract: '.bold()+ "Not yet release!"+"\n"+
-  'Marketplace: '.bold()+ "Not yet release!"+"\n"
+  'Contract: '.bold()+ "Not yet released!"+"\n"+
+  'Marketplace: '.bold()+ "Not yet released!"+"\n"
   
   , {
     reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML', reply_markup: {
@@ -81,7 +81,7 @@ bot.command('links',(ctx) => {
 
 //Game
 bot.command('games',async(ctx) => {
-    ctx.reply("There are no active game right now.".bold(), {
+    ctx.reply("There are no active game yet. Please stay updated and don’t miss the next release.".bold(), {
       reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML', reply_markup: {
         inline_keyboard: [
           [
