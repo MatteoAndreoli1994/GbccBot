@@ -47,7 +47,7 @@ bot.command('owners',(ctx) => {
 
 //Minted
 bot.command('minted',(ctx) => {
-  ctx.reply("Mints: 0".bold() +"\nThe Minting Fase has not started yet! \n", {
+  ctx.reply("🟢Mints: 0".bold() +"\nThe Minting Fase has not started yet! \n", {
     reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML'
   })
 })
